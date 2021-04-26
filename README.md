@@ -23,6 +23,8 @@ JavaScript does not assume a semicolon before square brackets.
 
 `Number('')` and `Number(null)` both give `0`.
 
+`1 << 32` is `1`.
+
 ## Nice sections in javascript.info
 
 https://javascript.info/variables#name-things-right
@@ -41,8 +43,12 @@ The special value `undefined` also stands apart. It makes a type of its own, jus
 
 `alert`, `prompt`, `confirm`.
 
-`String(4)`, `Number('  4  ')`, `Number(true)`.
+`String(4)`, `Number('  4  ')`, `Number(true)`, `+'4'`.
 
 Values that are intuitively “empty”, like `0`, an empty string, `null`, `undefined`, and `NaN`, become `false`.
 
 But `Boolean(' ')` and `Boolean('0')` both give `true`.
+
+`3` and `3.0` are the same (unlike in Python).
+
+`1 +'2'` and `'1' + 2` are both `'12'`.
