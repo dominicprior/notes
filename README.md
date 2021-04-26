@@ -31,7 +31,7 @@ https://javascript.info/variables#name-things-right
 
 ## Nice bits
 
-`` `the result is ${2 + 2}` ``
+`` `The result is ${2 + 2}` ``
 
 The Chrome console allows multiline input with shift+enter.
 
