@@ -56,6 +56,8 @@ Both switch and case allow arbitrary expressions.
 
 The string representation of a function is its source code.
 
+`x => 2*x`.
+
 https://javascript.info/while-for#labels-for-break-continue.
 
 This isn't JavaScript-specific but still a neat example: https://javascript.info/function-basics#functions-comments.
@@ -78,4 +80,6 @@ But `Boolean(' ')` and `Boolean('0')` both give `true`.
 
 `1 +'2'` and `'1' + 2` are both `'12'`.
 
-`function f() { g{} }` is the same as `f = function() { g() }`, except the first one (the function declaration) can be called earlier than when it is defined.
+`function f() { g() }` is the same as `f = function() { g() }`, except the first one (the function declaration) can be called earlier than when it is defined.
+
+Switch statements uses `===` (strict equality) for comparisons.
