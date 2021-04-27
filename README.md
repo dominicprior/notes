@@ -54,7 +54,11 @@ Both switch and case allow arbitrary expressions.
 
 `[u,v] = [3,4]`.
 
-https://javascript.info/while-for#labels-for-break-continue
+The string representation of a function is its source code.
+
+https://javascript.info/while-for#labels-for-break-continue.
+
+This isn't JavaScript-specific but still a neat example: https://javascript.info/function-basics#functions-comments.
 
 ## Other stuff
 
@@ -73,3 +77,5 @@ But `Boolean(' ')` and `Boolean('0')` both give `true`.
 `3` and `3.0` are the same (unlike in Python).
 
 `1 +'2'` and `'1' + 2` are both `'12'`.
+
+`function f() { g{} }` is the same as `f = function() { g() }`, except the first one (the function declaration) can be called earlier than when it is defined.
