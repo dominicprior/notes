@@ -4,14 +4,19 @@ I'm learning from https://javascript.info/, which looks like the JavaScript equi
 
 ## Gotchas
 
-JavaScript sometimes [fails to assume a semicolon](https://javascript.info/structure#semicolon) where it is really needed.  Here's an example:
+JavaScript sometimes [fails to assume a semicolon](https://javascript.info/structure#semicolon) where it is really needed.  Here's an example of JavaScript not assuming a semicolon before square brackets.
 ```
 alert("There will be an error")
 [1, 2].forEach(alert)
 ```
-JavaScript does not assume a semicolon before square brackets.
 
 `'foo' / 3` doesn't raise an exception.  Instead, it just returns `NaN`.
+
+JavaScript adds a `;` after this `return`:
+```
+return
+ (some + stuff)
+```
 
 ## Quirks
 
@@ -25,6 +30,8 @@ JavaScript does not assume a semicolon before square brackets.
 
 `1 << 32` is `1`.
 
+If a function parameter is not provided, then its value becomes `undefined`, rather than throwing an exception.
+
 ## Nice sections in javascript.info
 
 https://javascript.info/variables#name-things-right
@@ -34,6 +41,20 @@ https://javascript.info/variables#name-things-right
 `` `The result is ${2 + 2}` ``
 
 The Chrome console allows multiline input with shift+enter.
+
+`a ?? b` is `a` if `a` isn't `null` or `undefined` and `b` otherwise.
+
+`for (let i = 0; i < 3; i++)`.
+
+Both switch and case allow arbitrary expressions.
+
+`function f(x = someDefaultValue) { ... }`.
+
+`function f(x) { x ??= someDefaultValue; ... }`.
+
+`[u,v] = [3,4]`.
+
+https://javascript.info/while-for#labels-for-break-continue
 
 ## Other stuff
 
