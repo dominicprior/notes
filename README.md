@@ -20,7 +20,7 @@ return
 
 ## Quirks
 
-`"use strict"` is a welcome guest at the top of our scripts. Later, when our code is all in classes and modules, we may omit it.
+`"use strict"` puts us into modern JavaScript, as does using any classes or modules.
 
 `const bigInt = 1234567890123456789012345678901234567890n`.
 
