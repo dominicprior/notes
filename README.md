@@ -83,3 +83,7 @@ But `Boolean(' ')` and `Boolean('0')` both give `true`.
 `function f() { g() }` is the same as `f = function() { g() }`, except the first one (the function declaration) can be called earlier than when it is defined.
 
 Switch statements uses `===` (strict equality) for comparisons.
+
+https://javascript.info/coding-style#automated-linters.
+
+https://javascript.info/comments#good-comments
