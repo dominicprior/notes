@@ -32,6 +32,10 @@ return
 
 If a function parameter is not provided, then its value becomes `undefined`, rather than throwing an exception.
 
+`{[x]: 3}` is an example of a computed property.
+
+`{x}` is an object with key 'x' and value x.
+
 ## Nice sections in javascript.info
 
 https://javascript.info/variables#name-things-right
@@ -62,6 +66,10 @@ https://javascript.info/while-for#labels-for-break-continue.
 
 This isn't JavaScript-specific but still a neat example: https://javascript.info/function-basics#functions-comments.
 
+https://javascript.info/testing-mocha.
+
+https://javascript.info/polyfills.
+
 ## Other stuff
 
 The special `null` value forms a separate type of its own which contains only the `null` value.
@@ -86,4 +94,4 @@ Switch statements uses `===` (strict equality) for comparisons.
 
 https://javascript.info/coding-style#automated-linters.
 
-https://javascript.info/comments#good-comments
+https://javascript.info/comments#good-comments.
