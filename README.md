@@ -145,4 +145,5 @@ user = new User('fred')
 ## Sections I've skipped
 
 https://javascript.info/symbol
+
 https://javascript.info/object-toprimitive
