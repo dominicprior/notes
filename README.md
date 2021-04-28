@@ -111,4 +111,7 @@ Iterating over objects gives the integer keys (strings that look like integers) 
 `({name: 'fred', f() {return this.name}}).f()` gives `'fred'`.
 
 `({name: 'fred', f: () => this.name}).f()` gives `''`.
-
+```
+function User(name) { this.name = name }
+user = new User('fred')
+```
