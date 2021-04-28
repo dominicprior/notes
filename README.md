@@ -18,6 +18,12 @@ return
  (some + stuff)
 ```
 
+## Missing bits
+
+Operator overloading.
+
+Getting the last element with `[-1]`.
+
 ## Quirks
 
 `"use strict"` puts us into modern JavaScript, as does using any classes or modules.
@@ -31,6 +37,10 @@ return
 `1 << 32` is `1`.
 
 If a function parameter is not provided, then its value becomes `undefined`, rather than throwing an exception.
+
+`42..toString(2)` or `(42).toString(2)` or `42 .toString(2)` but not `42.toString(2)`.
+
+`if (~str.indexOf("foo")) { // found it!`.  The `~` is the *bitwise not* operator, and `~-1` is `0`.
 
 ## Nice sections in javascript.info
 
@@ -66,6 +76,16 @@ https://javascript.info/testing-mocha.
 
 https://javascript.info/polyfills.
 
+`user.address?.street`.  Also `undefined?.['foo']` and `undefined?.()`.
+
+`1_000_000`.
+
+`0.1.toFixed(20)` for diagnosing rounding errors.
+
+`parseInt('100px')`.
+
+`parseInt('0xff', 16)`.
+
 ## Other stuff
 
 The special `null` value forms a separate type of its own which contains only the `null` value.
@@ -92,6 +112,10 @@ https://javascript.info/coding-style#automated-linters.
 
 https://javascript.info/comments#good-comments.
 
+`str.length`.
+
+Strings are immutable.
+
 ## Objects
 
 `{}` is the same as `new Object()`.
@@ -115,3 +139,8 @@ Iterating over objects gives the integer keys (strings that look like integers) 
 function User(name) { this.name = name }
 user = new User('fred')
 ```
+
+## Sections I've skipped
+
+https://javascript.info/symbol
+https://javascript.info/object-toprimitive
