@@ -22,7 +22,7 @@ return
 
 Operator overloading.
 
-Getting the last element with `[-1]`.
+Getting the last element with `[-1]`.  But there is `x.slice(-1)`.
 
 ## Quirks
 
@@ -40,7 +40,7 @@ If a function parameter is not provided, then its value becomes `undefined`, rat
 
 `42..toString(2)` or `(42).toString(2)` or `42 .toString(2)` but not `42.toString(2)`.
 
-`if (~str.indexOf("foo")) { // found it!`.  The `~` is the *bitwise not* operator, and `~-1` is `0`.
+`if (~str.indexOf('foo')) { // found it!`.  The `~` is the *bitwise not* operator, and `~-1` is `0`.  These days people use `str.include('foo')`.
 
 ## Nice sections in javascript.info
 
@@ -115,6 +115,8 @@ https://javascript.info/comments#good-comments.
 `str.length`.
 
 Strings are immutable.
+
+`str.substr(start, length)`.  `str.substring(start, end)`.  `str.slice(start, end)`.  `slice` is the best because it works for lists too and because it allows negative arguments.
 
 ## Objects
 
