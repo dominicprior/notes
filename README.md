@@ -32,10 +32,6 @@ return
 
 If a function parameter is not provided, then its value becomes `undefined`, rather than throwing an exception.
 
-`{[x]: 3}` is an example of a computed property.
-
-`{x}` is an object with key 'x' and value x.
-
 ## Nice sections in javascript.info
 
 https://javascript.info/variables#name-things-right
@@ -95,3 +91,24 @@ Switch statements uses `===` (strict equality) for comparisons.
 https://javascript.info/coding-style#automated-linters.
 
 https://javascript.info/comments#good-comments.
+
+## Objects
+
+`{}` is the same as `new Object()`.
+
+Object properties are always strings.
+
+Iterating over objects gives the integer keys (strings that look like integers) in numerical order and then the other keys in insertion order.
+
+`{[x]: 3}` is an example of a computed property.  There is also `{f() { ... }}`.
+
+`{x}` is an object with key 'x' and value x.
+
+`key in obj`.
+
+`for (let k in obj) ...`.
+
+`({name: 'fred', f() {return this.name}}).f()` gives `'fred'`.
+
+`({name: 'fred', f: () => this.name}).f()` gives `''`.
+
