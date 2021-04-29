@@ -50,7 +50,7 @@ https://javascript.info/variables#name-things-right
 
 `` `The result is ${2 + 2}` ``
 
-The Chrome console allows multiline input with shift+enter.
+The Chrome console allows multiline input with shift+enter.  It also has syntax highlighting and auto completion.
 
 `a ?? b` is `a` if `a` isn't `null` or `undefined` and `b` otherwise.
 
@@ -141,6 +141,18 @@ Iterating over objects gives the integer keys (strings that look like integers) 
 function User(name) { this.name = name }
 user = new User('fred')
 ```
+
+## Arrays
+
+Like in Perl, elements can be added off the end of an array: `a = [7] ; a[1] = 8`.  There is also `push`, `pop`, `shift` and `unshift`.
+
+Arrays can have properties: `a = ['p'] ; a.foo = 'q'`.  Note that `for (x in a)` gives both `'0'` and `'foo'`.  Therefore, we usually want `for (x of a)`, which gives `'p'`.
+
+`a.length` is writable.  For example, `a.length = 0` clears the array.
+
+`new Array(10)` creates an array of ten `empty` values, where `empty` is slightly different to `undefined`.
+
+The Swiss army knife for arrays is `splice` (not to be confused with `slice`, which returns a new sub-array and which also works on strings).  The syntax is `arr.splice(start[, deleteCount, elem1, ..., elemN])`.
 
 ## Sections I've skipped
 
