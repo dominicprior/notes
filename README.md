@@ -154,6 +154,14 @@ Arrays can have properties: `a = ['p'] ; a.foo = 'q'`.  Note that `for (x in a)`
 
 The Swiss army knife for arrays is `splice` (not to be confused with `slice`, which returns a new sub-array and which also works on strings).  The syntax is `arr.splice(start[, deleteCount, elem1, ..., elemN])`.
 
+`["Bilbo", "Gandalf"].map(item => item.length)`.  But, unlike in Haskell, the function also receives the index and the array.  For example, we can write this: `["Bilbo", "Gandalf"].map((item, index, array) => .....)`.  There's also `reduce` and `reduceRight`.  And `every` and `some` (corresponding to Haskell's `all` and `any`).
+
+`["Bilbo", "Gandalf"].filter(item => item.length == 5)`.  There are also various search functions.
+
+`arr.sort((a, b) => a - b)`.
+
+https://javascript.info/array-methods
+
 ## Sections I've skipped
 
 https://javascript.info/symbol
