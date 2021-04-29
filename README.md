@@ -18,6 +18,8 @@ return
  (some + stuff)
 ```
 
+Maps don't work properly with `[]` syntax.  Use `get` and `set` instead.
+
 ## Missing bits
 
 Operator overloading.
@@ -41,6 +43,8 @@ If a function parameter is not provided, then its value becomes `undefined`, rat
 `42..toString(2)` or `(42).toString(2)` or `42 .toString(2)` but not `42.toString(2)`.
 
 `if (~str.indexOf('foo')) { // found it!`.  The `~` is the *bitwise not* operator, and `~-1` is `0`.  These days people use `str.include('foo')`.
+
+Iteration over maps is in insertion order.
 
 ## Nice sections in javascript.info
 
@@ -176,8 +180,24 @@ range = {[Symbol.iterator]: function() { return {
 ```
 `Array.from(range)` or `Array.from(range, x => x*x)`.
 
+Maps, set and arrays have `keys()`, `values()` and `entries()` iterator methods.
+
+## Destructuring
+
+`[x, , z] = a`.
+
+`[x, y, ...rest] = b`.
+
+`[x = myDefault, y] = a`.
+
+`{u, v} = obj` is the same as `u = obj.u ; v = obj.v`.  But see the variable scope gotcha in https://javascript.info/destructuring-assignment#the-rest-pattern.
+
+This sort of destructuring can be useful for APIs with loads of optional arguments.  https://javascript.info/destructuring-assignment#smart-function-parameters.
+
 ## Sections I've skipped
 
 https://javascript.info/symbol
 
 https://javascript.info/object-toprimitive
+
+https://javascript.info/weakmap-weakset
