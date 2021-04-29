@@ -162,6 +162,20 @@ The Swiss army knife for arrays is `splice` (not to be confused with `slice`, wh
 
 https://javascript.info/array-methods
 
+## Iterables
+
+Objects that can be used in `for..of` are called *iterable*.  They have a `Symbol.iterator` property that gives an object with a `next` function.
+```
+range = {[Symbol.iterator]: function() { return {
+  current: 1,
+  next() {
+    if (this.current <= 3) {
+      return { done: false, value: this.current++ };
+    } else {
+      return { done: true } } } } } }
+```
+`Array.from(range)` or `Array.from(range, x => x*x)`.
+
 ## Sections I've skipped
 
 https://javascript.info/symbol
