@@ -5,7 +5,7 @@ I'm learning from https://javascript.info/, which looks like the JavaScript equi
 ## Gotchas
 
 JavaScript sometimes [fails to assume a semicolon](https://javascript.info/structure#semicolon) where it is really needed.  Here's an example of JavaScript not assuming a semicolon before square brackets.
-```
+```js
 alert("There will be an error")
 [1, 2].forEach(alert)
 ```
@@ -13,7 +13,7 @@ alert("There will be an error")
 `'foo' / 3` doesn't raise an exception.  Instead, it just returns `NaN`.
 
 JavaScript adds a `;` after this `return`:
-```
+```js
 return
  (some + stuff)
 ```
@@ -90,6 +90,17 @@ https://javascript.info/polyfills.
 
 `parseInt('0xff', 16)`.
 
+https://javascript.info/closure.
+
+```js
+function makeCounter() {
+  let count = 0;
+  return [function() { return ++count; },
+          function() { return --count; }];
+}
+let [up,down] = makeCounter();  // the up and down functions share the same count.
+```
+
 ## Other stuff
 
 The special `null` value forms a separate type of its own which contains only the `null` value.
@@ -145,7 +156,7 @@ Iterating over objects gives the integer keys (strings that look like integers) 
 `({name: 'fred', f() {return this.name}}).f()` gives `'fred'`.
 
 `({name: 'fred', f: () => this.name}).f()` gives `''`.
-```
+```js
 function User(name) { this.name = name }
 user = new User('fred')
 ```
@@ -173,7 +184,7 @@ https://javascript.info/array-methods
 ## Iterables
 
 Objects that can be used in `for..of` are called *iterable*.  They have a `Symbol.iterator` property that gives an object with a `next` function.
-```
+```js
 range = {[Symbol.iterator]: function() { return {
   current: 1,
   next() {
@@ -190,7 +201,7 @@ Maps, set and arrays have `keys()`, `values()` and `entries()` iterator methods.
 
 `[x, , z] = a`.
 
-`[x, y, ...rest] = b`.
+`[x, y, ...rest] = b`.  Similar to `(x, y, ...rest) => .....`.  Also `Math.max(...a, x, ...b)` and `[...a, ...b]` and `[...str]` and `{...obj}`.
 
 `[x = myDefault, y] = a`.
 
