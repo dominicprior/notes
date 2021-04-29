@@ -122,6 +122,10 @@ Strings are immutable.
 
 `str.substr(start, length)`.  `str.substring(start, end)`.  `str.slice(start, end)`.  `slice` is the best because it works for lists too and because it allows negative arguments.
 
+`JSON.stringify(foo, myFn, '  ')`.
+
+`JSON.parse(str)`.
+
 ## Objects
 
 `{}` is the same as `new Object()`.
@@ -201,3 +205,5 @@ https://javascript.info/symbol
 https://javascript.info/object-toprimitive
 
 https://javascript.info/weakmap-weakset
+
+https://javascript.info/date
