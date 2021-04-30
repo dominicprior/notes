@@ -46,6 +46,15 @@ If a function parameter is not provided, then its value becomes `undefined`, rat
 
 Iteration over maps is in insertion order.
 
+Functions have properties, for example `name` and `length`.
+
+Function expressions can have internal names, which can be useful for recursion:
+```
+(function f(n) { return n == 0 ? 1 : n * f(n-1) })(3)
+```
+
+`new Function('a', 'b', 'return a + b')`.
+
 ## Nice sections in javascript.info
 
 https://javascript.info/variables#name-things-right
@@ -136,6 +145,8 @@ Strings are immutable.
 `JSON.stringify(foo, myFn, '  ')`.
 
 `JSON.parse(str)`.
+
+In a browser there is the global called `window`.  All properties of the global object can be accessed directly.  For example: `window.alert == alert`.
 
 ## Objects
 
