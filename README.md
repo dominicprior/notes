@@ -55,6 +55,19 @@ Function expressions can have internal names, which can be useful for recursion:
 
 `new Function('a', 'b', 'return a + b')`.
 
+`f.call(myThis, arg1, arg2)`.  `f.apply(myThis, [arg1, arg2])`.  https://javascript.info/call-apply-decorators#using-func-call-for-the-context.
+```js
+let wrapper = function() {
+  return func.apply(this, arguments);
+};
+```
+
+```js
+function hash() {
+  return [].join.call(arguments);  // method borrowing
+}
+```
+
 ## Nice sections in javascript.info
 
 https://javascript.info/variables#name-things-right
