@@ -148,6 +148,10 @@ Strings are immutable.
 
 In a browser there is the global called `window`.  All properties of the global object can be accessed directly.  For example: `window.alert == alert`.
 
+Nested `setTimeout` is more flexible than `setInterval`.
+
+In the browser, there’s a limitation of how often nested timers can run. The HTML5 standard says: “after five nested timers, the interval is forced to be at least 4 milliseconds.”.
+
 ## Objects
 
 `{}` is the same as `new Object()`.
