@@ -68,6 +68,8 @@ function hash() {
 }
 ```
 
+`f.bind(myThis)`.
+
 ## Nice sections in javascript.info
 
 https://javascript.info/variables#name-things-right
@@ -181,9 +183,6 @@ Iterating over objects gives the integer keys (strings that look like integers) 
 
 `for (let k in obj) ...`.
 
-`({name: 'fred', f() {return this.name}}).f()` gives `'fred'`.
-
-`({name: 'fred', f: () => this.name}).f()` gives `''`.
 ```js
 function User(name) { this.name = name }
 user = new User('fred')
@@ -236,6 +235,29 @@ Maps, set and arrays have `keys()`, `values()` and `entries()` iterator methods.
 `{u, v} = obj` is the same as `u = obj.u ; v = obj.v`.  But see the variable scope gotcha in https://javascript.info/destructuring-assignment#the-rest-pattern.
 
 This sort of destructuring can be useful for APIs with loads of optional arguments.  https://javascript.info/destructuring-assignment#smart-function-parameters.
+
+## this
+
+The `this` inside a function is evaluated at call-time and does not depend on where the method was declared, but rather on what object is “before the dot”.
+
+Consider this simple function `function f() { return this }`.  Then `f() === undefined`.  (In non strict mode (and therefore in the Chrome console), `f() === windows`).
+
+Now consider this simple object `u = {g: f}` and note that `u.g === f` but that `u.g() === u`.
+
+The `this` inside an arrow function, on the other hand, seems to be set at definition time, contrary to what it says [here](https://javascript.info/object-methods#arrow-functions-have-no-this).
+
+```js
+"use strict";
+const a = () => this;
+let user = {
+  sayHi() {
+	const aa = () => this;
+	console.log(a());   // window
+	console.log(aa());  // user
+  }
+};
+user.sayHi();
+```
 
 ## Sections I've skipped
 
