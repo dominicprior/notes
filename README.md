@@ -158,6 +158,12 @@ Nested `setTimeout` is more flexible than `setInterval`.
 
 In the browser, there’s a limitation of how often nested timers can run. The HTML5 standard says: “after five nested timers, the interval is forced to be at least 4 milliseconds.”.
 
+Properties have `writable`, `enumerable` and `configurable` flags and can also have custom getters and setters.
+
+`rabbit.__proto__ = animal`.
+
+`for (x in rabbit)` gives `rabbit` and `animal` properties.  `Object.keys(rabbit)` only gives the `rabbit` properties.  Neither give the `Object` properties.
+
 ## Objects
 
 `{}` is the same as `new Object()`.
