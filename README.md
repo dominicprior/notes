@@ -160,7 +160,11 @@ In the browser, there’s a limitation of how often nested timers can run. The H
 
 Properties have `writable`, `enumerable` and `configurable` flags and can also have custom getters and setters.
 
-`rabbit.__proto__ = animal`.
+`rabbit.__proto__ = animal` sets the superclass for an individual object.
+
+`Rabbit.prototype = animal` sets the superclass for all objects that are then created via the `Rabbit` constructor.
+
+By default, all functions have `func.prototype.constructor === func`.
 
 `for (x in rabbit)` gives `rabbit` and `animal` properties.  `Object.keys(rabbit)` only gives the `rabbit` properties.  Neither give the `Object` properties.
 
@@ -284,3 +288,5 @@ https://javascript.info/object-toprimitive
 https://javascript.info/weakmap-weakset
 
 https://javascript.info/date
+
+https://javascript.info/prototype-methods
