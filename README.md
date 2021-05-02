@@ -55,20 +55,11 @@ Function expressions can have internal names, which can be useful for recursion:
 
 `new Function('a', 'b', 'return a + b')`.
 
-`f.call(myThis, arg1, arg2)`.  `f.apply(myThis, [arg1, arg2])`.  https://javascript.info/call-apply-decorators#using-func-call-for-the-context.
-```js
-let wrapper = function() {
-  return func.apply(this, arguments);
-};
-```
-
 ```js
 function hash() {
   return [].join.call(arguments);  // method borrowing
 }
 ```
-
-`f.bind(myThis)`.
 
 ## Nice sections in javascript.info
 
@@ -238,9 +229,9 @@ This sort of destructuring can be useful for APIs with loads of optional argumen
 
 ## this
 
-The `this` inside a function is evaluated at call-time and does not depend on where the method was declared, but rather on what object is “before the dot”.
+The `this` inside a non-arrow function is evaluated at call time and does not depend on where the method was declared, but rather on what object is “before the dot”.
 
-Consider this simple function `function f() { return this }`.  Then `f() === undefined`.  (In non strict mode (and therefore in the Chrome console), `f() === windows`).
+Consider this simple function `function f() { return this }`.  Then `f() === undefined`.  (When in non-strict mode (and therefore at the Chrome console), `f() === windows`).
 
 Now consider this simple object `u = {g: f}` and note that `u.g === f` but that `u.g() === u`.
 
@@ -257,6 +248,25 @@ let user = {
   }
 };
 user.sayHi();
+```
+
+The result of `func.bind(context)` is a special function-like “exotic object”, that is callable as a function and transparently passes the call to `func` setting `this=context`.
+
+`bind` can also create partial functions:
+
+```
+function mul(x, y) { return x * y }
+triple = mul.bind(null, 3)
+```
+
+There's also `f.apply(myThis, argList)` and `func.call(myThis, .....)`.
+
+The keyword `arguments` can be used like this:
+
+```js
+let wrapper = function() {
+  return func.apply(this, arguments);
+};
 ```
 
 ## Sections I've skipped
