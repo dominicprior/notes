@@ -170,6 +170,8 @@ By default, all functions have `func.prototype.constructor === func`.
 
 `Object.assign(dest, src1, src2, ...)` copies all the properties to the `dest` object.
 
+`try` and `catch` all seem fairly standard.
+
 ## Objects
 
 `{}` is the same as `new Object()`.
@@ -293,7 +295,7 @@ With or without the new *class* syntax, JavaScript is still at heart a functiona
 
 Here are some bits of syntax.
 
-```
+```js
 class C { f() { ..... } }
 c = new C()
 c.f()
@@ -318,6 +320,39 @@ class F {
 class Rabbit extends Animal {  // We can also extend builtin classes like Array.
   f() { super.f(); ..... }  // But note that arrow functions don't have a super.
 }
+```
+
+## Promises
+
+`p = new Promise(function(resolve, reject) { ..... })`.
+
+The function passed to the Promise constructor is called the *executor*.  The executor runs straight away.  `resolve` and `reject` are functions the executor can call to indicate success or failure.
+
+```js
+p = new Promise(function(resolve, reject) {
+})
+p  // a pending promise
+
+p = new Promise(function(resolve, reject) {
+  resolve('Yay!')
+})
+p  // a fulfilled promise
+
+p = new Promise(function(resolve, reject) {
+  setTimeout(() => resolve("done"), 5000);
+})
+p  // pending, but 5 seconds later it will be fulfilled.
+
+p = new Promise(function(resolve, reject) {
+  resolve('Yay!')
+})
+p.then(result => console.log('Yes: answer = ' + result),
+       error  => console.log('oops!'))
+
+p = new Promise(resolve => {
+  setTimeout(() => resolve("done!"), 1000)
+})
+p.then(console.log); // shows "done!" after 1 second
 ```
 
 ## Sections I've skipped
