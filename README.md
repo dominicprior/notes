@@ -172,6 +172,10 @@ By default, all functions have `func.prototype.constructor === func`.
 
 `try` and `catch` all seem fairly standard.
 
+```js
+function* generateSequence() { yield 1; yield 2; return 3; }
+```
+
 ## Objects
 
 `{}` is the same as `new Object()`.
@@ -361,7 +365,19 @@ p.then(console.log)  // We can call then multiple times
 delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 new Promise(resolve => resolve(10)).then(x => 2*x).then(x => 2*x)
+
+https://javascript.info/microtask-queue
 ```
+
+## Async/await
+
+It's all amazingly neat.
+
+https://javascript.info/async-await
+
+`async function f() {return 3}` returns a promise.  Or `f = async () => 3`.
+
+https://javascript.info/async-await#error-handling
 
 ## Sections I've skipped
 
@@ -376,3 +392,7 @@ https://javascript.info/date
 https://javascript.info/prototype-methods
 
 https://javascript.info/private-protected-properties-methods
+
+https://javascript.info/generators-iterators
+
+https://javascript.info/async-iterators-generators
