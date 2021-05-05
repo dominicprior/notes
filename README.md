@@ -353,6 +353,14 @@ p = new Promise(resolve => {
   setTimeout(() => resolve("done!"), 1000)
 })
 p.then(console.log); // shows "done!" after 1 second
+
+p = new Promise(resolve => { resolve('Yay!') })
+p.then(console.log)
+p.then(console.log)  // We can call then multiple times
+
+delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
+new Promise(resolve => resolve(10)).then(x => 2*x).then(x => 2*x)
 ```
 
 ## Sections I've skipped
