@@ -168,6 +168,8 @@ By default, all functions have `func.prototype.constructor === func`.
 
 `for (x in rabbit)` gives `rabbit` and `animal` properties.  `Object.keys(rabbit)` only gives the `rabbit` properties.  Neither give the `Object` properties.
 
+`Object.assign(dest, src1, src2, ...)` copies all the properties to the `dest` object.
+
 ## Objects
 
 `{}` is the same as `new Object()`.
@@ -279,6 +281,45 @@ let wrapper = function() {
 };
 ```
 
+## Classes
+
+After classes were added in 2015, JavaScript's object-orientation was still [prototype-based](https://en.wikipedia.org/wiki/JavaScript#Object-orientation_(prototype-based)).
+
+As Douglas Crockford says:
+
+> You make prototype objects, and then … make new instances. Objects are mutable in JavaScript, so we can augment the new instances, giving them new fields and methods. These can then act as prototypes for even newer objects. We don't need classes to make lots of similar objects… Objects inherit from objects. What could be more object oriented than that?
+
+With or without the new *class* syntax, JavaScript is still at heart a functional programming language, thanks to its influence from Scheme.
+
+Here are some bits of syntax.
+
+```
+class C { f() { ..... } }
+c = new C()
+c.f()
+c.constructor.name === 'C'  // i.e. the same as before classes were invented.
+c instanceof C === true     // Also the same as before.
+
+D = class { ..... }
+
+class E {
+  .....
+  get x() { return ..... }
+  set x(value) { ..... }
+}
+e = new E()
+e.x
+
+class F {
+  x = 3
+  static y = 4
+}
+
+class Rabbit extends Animal {  // We can also extend builtin classes like Array.
+  f() { super.f(); ..... }  // But note that arrow functions don't have a super.
+}
+```
+
 ## Sections I've skipped
 
 https://javascript.info/symbol
@@ -290,3 +331,5 @@ https://javascript.info/weakmap-weakset
 https://javascript.info/date
 
 https://javascript.info/prototype-methods
+
+https://javascript.info/private-protected-properties-methods
