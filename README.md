@@ -379,6 +379,30 @@ https://javascript.info/async-await
 
 https://javascript.info/async-await#error-handling
 
+## Modules
+
+A module is just a file.
+
+```js
+export function f() { ..... }
+export let admin = { name: "John" }
+```
+
+```js
+import {f} from './foo.js'  // Assigns exported function f to the corresponding variable.
+```
+
+```html
+<script type="module">
+```
+
+Note: modules work only via HTTP(s), not in local files.
+
+Each module has its own top-level scope.
+
+> In real-life, browser modules are rarely used in their “raw” form.
+> Usually, we bundle them together with a special tool such as Webpack and deploy to the production server.
+
 ## Sections I've skipped
 
 https://javascript.info/symbol
@@ -396,3 +420,9 @@ https://javascript.info/private-protected-properties-methods
 https://javascript.info/generators-iterators
 
 https://javascript.info/async-iterators-generators
+
+https://javascript.info/import-export
+
+https://javascript.info/modules-dynamic-imports
+
+https://javascript.info/js-misc
