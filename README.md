@@ -197,6 +197,8 @@ function User(name) { this.name = name }
 user = new User('fred')
 ```
 
+`Element.prototype.aaa = 'bbb'`.  Then `document.body.aaa === 'bbb'`.  See the class hierarchy here: https://javascript.info/basic-dom-node-properties.
+
 ## Arrays
 
 Like in Perl, elements can be added off the end of an array: `a = [7] ; a[1] = 8`.  There is also `push`, `pop`, `shift` and `unshift`.
