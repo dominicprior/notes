@@ -15,3 +15,11 @@ It may not have children and is always a leaf of the tree.
 Browsers do autocorrection.  For example, `hello` get changed to `<html><head></head><body>hello</body></html>`.
 
 Everything in HTML, even comments, becomes a part of the DOM.
+
+`elem.querySelectorAll(css)` returns (as a static collection) all elements inside `elem` matching the given CSS selector.
+
+`console.dir(elem)`.
+
+`document.body.innerHTML += 'foo'` is a complete overwrite.  There's also `outerHTML`.
+
+`elem.textContent = .....` inserted “as text”, so all symbols are treated literally, but maybe this is better: `myTextNode.data = .....`.
