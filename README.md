@@ -199,15 +199,13 @@ user = new User('fred')
 
 ## Inheritance
 
-If a property for `obj` is missing, JavaScript will look in `obj.__proto__`.  `__proto__` is a historical getter/setter for `[[Prototype]]`.
+If a property for `obj` is missing, JavaScript will look in `obj.__proto__`.  (`__proto__` is a historical getter/setter for `[[Prototype]]`).
 
-But note: If `F.prototype` is an object, then the `new` operator uses it to set `[[Prototype]]` for the new object.  See https://javascript.info/function-prototype.
+If `F.prototype` is an object, then `new F` sets `[[Prototype]]` to `F.prototype`.  See https://javascript.info/function-prototype.
 
 For example, `document.body.__proto__ === HTMLBodyElement.prototype` and `document.body.__proto__.__proto__ === HTMLElement.prototype`.
 
 `Element.prototype.aaa = 'bbb'`.  Then `document.body.aaa === 'bbb'`.  See the class hierarchy here: https://javascript.info/basic-dom-node-properties.
-
-`Object.prototype.getProto = function() { return Object.getPrototypeOf(this) }`.
 
 ## Arrays
 
