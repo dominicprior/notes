@@ -23,3 +23,13 @@ Everything in HTML, even comments, becomes a part of the DOM.
 `document.body.innerHTML += 'foo'` is a complete overwrite.  There's also `outerHTML`.
 
 `elem.textContent = .....` inserted “as text”, so all symbols are treated literally, but maybe this is better: `myTextNode.data = .....`.
+
+Typically HTML tags attributes are available as JavaScript properties.  For example, `<body id="a">` gives `document.body.id === 'a'` and
+`document.body.getAttribute['id'] === 'a'`.  But note that the properties and attributes can be different.  Properties are usually
+better than attributes (as well as being shorter).  See https://javascript.info/dom-attributes-and-properties.
+
+We can add elements with `append`, `prepend`, `before` and `after`.
+
+It's important to start with `<!DOCTYPE HTML>`.
+
+We can add our own attributes to HTML elements.  See, for example, https://javascript.info/event-delegation#behavior-counter.
