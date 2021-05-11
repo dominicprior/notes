@@ -48,14 +48,14 @@ function calcMatrices() {
 
 let matrices = calcMatrices()
 
-drawTree(9, matrices, mainGroup, h / 30, h / 3, 'brown')
+drawTree(10, matrices, mainGroup, h / 30, h / 3, 'brown')
 drawCircles()
 
 function drawCircles() {
   for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
     for (let end of br) {
       let circle = mainGroup.circle(50).
-            center(end[0], end[1]).fill('purple')
+            center(end[0], end[1]).fill('red')
       circles.push(circle)
     }
   }
@@ -98,17 +98,18 @@ let down = false
 let nearestI, nearestJ
 
 // note what blob we are moving and its offset from the mouse
-draw.mousedown((event) => {
+
+draw.node.onpointerdown = (event) => {
   let [x, y] = coords(event);
   [nearestI, nearestJ] = nearestBlob(x, y)
   let b = blobs[nearestI][nearestJ]
   cx = b[0] - x
   cy = b[1] - y
   down = true
-})
+}
 
 
-draw.mousemove((event) => {
+draw.node.onpointermove = (event) => {
   if (down) {
     let [x, y] = coords(event)
     blobs[nearestI][nearestJ] = [x+cx, y+cy]
@@ -116,9 +117,9 @@ draw.mousemove((event) => {
     updateTransforms(newMatrices, mainGroup)
     updateCircles()
   }
-})
+}
 
 
-draw.mouseup(() => {
+draw.node.onpointerup = () => {
   down = false
-})
+}
