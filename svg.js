@@ -13,10 +13,12 @@ function drawTree(numLevels, matrices, group,
 }
 
 function updateTransforms(matrices, group) {
-  for (let child of group.children()) {
+  let ch = group.children()
+  let n = 0
+  for (let i=0; i < ch.length; i++) {
+    let child = ch[i]
     if (child.node.nodeName === 'g') {
-      //child.transform(matrix)
-      console.log(child.node)
+      child.transform(matrices[n++])
       updateTransforms(matrices, child)
     }
   }
@@ -31,22 +33,43 @@ let mainGroup = draw.group()
 let blobs = [ [ [0, 300], [150, 580] ],
               [ [0, 420], [-150, 640] ] ]
 
-let matrices = []
+let circles = []
 
-for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
-  let a = (br[1][1] - br[0][1]) / (h / 3)
-  let b = (br[1][0] - br[0][0]) / (h / 3)
-  let matrix = new SVG.Matrix(a, -b, b, a, br[0][0], br[0][1])
-  matrices.push(matrix)
+function calcMatrices() {
+  let result = []
+  for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
+    let a = (br[1][1] - br[0][1]) / (h / 3)
+    let b = (br[1][0] - br[0][0]) / (h / 3)
+    let matrix = new SVG.Matrix(a, -b, b, a, br[0][0], br[0][1])
+    result.push(matrix)
+  }
+  return result
 }
 
-drawTree(3, matrices, mainGroup, h / 30, h / 3, 'brown')
+let matrices = calcMatrices()
 
-for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
-  for (let end of br) {
-    mainGroup.circle(50).center(end[0], end[1]).fill('purple')
+drawTree(8, matrices, mainGroup, h / 30, h / 3, 'brown')
+drawCircles()
+
+function drawCircles() {
+  for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
+    for (let end of br) {
+      let circle = mainGroup.circle(50).
+            center(end[0], end[1]).fill('purple')
+      circles.push(circle)
+    }
   }
 }
+
+function updateCircles() {
+  let i=0
+  for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
+    for (let end of br) {
+      circles[i++].center(end[0], end[1])
+    }
+  }
+}
+
 function coords(event) {
   return [event.x - w / 2, 4 * h / 5 - event.y]
 }
@@ -74,10 +97,13 @@ function nearestBlob(x, y) {
 draw.mousedown((event) => {
   let [x, y] = coords(event)
   let [nearestI, nearestJ] = nearestBlob(x, y)
-  let nearestXY = blobs[nearestI][nearestJ]
-  mainGroup.circle(40).center(nearestXY[0], nearestXY[1])
-    .fill('green')
-  // updateTransforms('not a matrix', mainGroup)
+  ///let nearestXY = blobs[nearestI][nearestJ]
+  ///mainGroup.circle(40).center(nearestXY[0], nearestXY[1])
+  ///  .fill('green')
+  blobs[nearestI][nearestJ] = [x, y]
+  let newMatrices = calcMatrices()
+  updateTransforms(newMatrices, mainGroup)
+  updateCircles()
 })
 
 
