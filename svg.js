@@ -48,7 +48,7 @@ function calcMatrices() {
 
 let matrices = calcMatrices()
 
-drawTree(8, matrices, mainGroup, h / 30, h / 3, 'brown')
+drawTree(9, matrices, mainGroup, h / 30, h / 3, 'brown')
 drawCircles()
 
 function drawCircles() {
@@ -93,21 +93,32 @@ function nearestBlob(x, y) {
   return [bestI, bestJ]
 }
 
+let cx, cy  // offset
+let down = false
+let nearestI, nearestJ
+
 // note what blob we are moving and its offset from the mouse
 draw.mousedown((event) => {
-  let [x, y] = coords(event)
-  let [nearestI, nearestJ] = nearestBlob(x, y)
-  ///let nearestXY = blobs[nearestI][nearestJ]
-  ///mainGroup.circle(40).center(nearestXY[0], nearestXY[1])
-  ///  .fill('green')
-  blobs[nearestI][nearestJ] = [x, y]
-  let newMatrices = calcMatrices()
-  updateTransforms(newMatrices, mainGroup)
-  updateCircles()
+  let [x, y] = coords(event);
+  [nearestI, nearestJ] = nearestBlob(x, y)
+  let b = blobs[nearestI][nearestJ]
+  cx = b[0] - x
+  cy = b[1] - y
+  down = true
 })
 
 
-// Update the blob and a matrix and draw the whole tree again
-// by clearing stuff and calling drawTree again.
-// Or walk the tree poking the transform values.
-//draw.mousedown((event) => {
+draw.mousemove((event) => {
+  if (down) {
+    let [x, y] = coords(event)
+    blobs[nearestI][nearestJ] = [x+cx, y+cy]
+    let newMatrices = calcMatrices()
+    updateTransforms(newMatrices, mainGroup)
+    updateCircles()
+  }
+})
+
+
+draw.mouseup(() => {
+  down = false
+})
