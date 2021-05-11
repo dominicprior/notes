@@ -22,21 +22,11 @@ function updateTransforms(matrices, group) {
   }
 }
 
-
-//window.addEventListener('load', (event) => {
-
 let w  = window.innerWidth
 let h = window.innerHeight
 let draw = SVG().addTo('body').size(w, h)
 let mainGroup = draw.group()
-               .transform({tx: w / 2, ty: 4 * h / 5, flip: 'y'})
-
-// Q: Where will we flip the circle coords?
-// The events are on the "draw" and therefore need flipping
-// into the "mainGroup" coordinate system.
-// Maybe we should flip as soon as we receive the event.
-// Then all the logic will be in the mainGroup coordinate system.
-// Also the blob array can be in the mainGroup coordinate system.
+      .transform({tx: w / 2, ty: 4 * h / 5, flip: 'y'})
 
 let blobs = [ [ [0, 300], [150, 580] ],
               [ [0, 420], [-150, 640] ] ]
@@ -44,49 +34,50 @@ let blobs = [ [ [0, 300], [150, 580] ],
 let matrices = []
 
 for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
-  for (let end of br) {
-    mainGroup.circle(50).center(end[0], end[1]).fill('purple')
-  }
   let a = (br[1][1] - br[0][1]) / (h / 3)
   let b = (br[1][0] - br[0][0]) / (h / 3)
   let matrix = new SVG.Matrix(a, -b, b, a, br[0][0], br[0][1])
   matrices.push(matrix)
 }
-/*
-let uv = [0, 300]
-let duv = [150, 280]
-let x = duv[0] / (h / 3)
-let y = duv[1] / (h / 3)
 
-mainGroup.circle(20).center(uv[0], uv[1])
-mainGroup.circle(20).center(uv[0] + duv[0],
-                        uv[1] + duv[1])
+drawTree(3, matrices, mainGroup, h / 30, h / 3, 'brown')
 
-let matrix1 = new SVG.Matrix(y, -x, x, y, uv[0], uv[1])
-
-uv = [0, 420]
-duv = [-150, 220]
-x = duv[0] / (h / 3)
-y = duv[1] / (h / 3)
-
-mainGroup.circle(20).center(uv[0], uv[1])
-mainGroup.circle(20).center(uv[0] + duv[0],
-                        uv[1] + duv[1])
-
-let matrix2 = new SVG.Matrix(y, -x, x, y, uv[0], uv[1])
-*/
-drawTree(2, matrices, mainGroup,
-         h / 30, h / 3, 'brown')
-
+for (let br of blobs) {  // e.g. [ [0, 300], [150, 580] ]
+  for (let end of br) {
+    mainGroup.circle(50).center(end[0], end[1]).fill('purple')
+  }
+}
 function coords(event) {
   return [event.x - w / 2, 4 * h / 5 - event.y]
+}
+
+function nearestBlob(x, y) {
+  let bestDistance = 1e99
+  let bestI
+  let bestJ
+  for (let i in blobs) {
+    let br = blobs[i]    // e.g. [ [0, 300], [150, 580] ]
+    for (let j in br) {  // e.g. [0, 300]
+      let end = br[j]
+      let distance = Math.hypot(end[0] - x, end[1] - y)
+      if (distance < bestDistance) {
+        bestDistance = distance
+        bestI = i
+        bestJ = j
+      }
+    }
+  }
+  return [bestI, bestJ]
 }
 
 // note what blob we are moving and its offset from the mouse
 draw.mousedown((event) => {
   let [x, y] = coords(event)
-  mainGroup.circle(20).center(x, y)
-  updateTransforms('not a matrix', mainGroup)
+  let [nearestI, nearestJ] = nearestBlob(x, y)
+  let nearestXY = blobs[nearestI][nearestJ]
+  mainGroup.circle(40).center(nearestXY[0], nearestXY[1])
+    .fill('green')
+  // updateTransforms('not a matrix', mainGroup)
 })
 
 
