@@ -4,7 +4,7 @@ Jekyll seems to do two main things:
 
 - Reuse stuff using *layouts* that include the *contents*.
 
-It doesn't seem to require a _config.yml file.
+It doesn't seem to require a `_config.yml` file.
 
 As well as translating md to html, it also translates scss to css.
 
@@ -24,3 +24,4 @@ Here's an example of using *Liquid*:
   {% endfor %}
 </ul>
 ```
+Layouts are templates that wrap around your content.  https://jekyllrb.com/docs/layouts/.
