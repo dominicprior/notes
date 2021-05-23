@@ -153,3 +153,21 @@ p[class*="special"] { .....
 ```css
 p[class*="special" i] { .....
 ```
+
+```css
+a:hover { ...
+```
+
+```css
+.foo:focus { ...
+```
+
+```css
+.foo::before {
+  content: "bla bla"
+```
+
+```css
+::selection {
+  background-color: lightblue;
+```
