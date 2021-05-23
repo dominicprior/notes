@@ -65,6 +65,35 @@ p:first-child {
 }
 ```
 
+```css
+.foo {
+    color: inherit;
+}
+```
 
+```css
+.foo {
+    all: unset;
+}
+```
 
+```css
+h1 + p::first-letter {
+  color: red;
+  font-size: 150%;
+}
+```
 
+Specificity scores are in thousands, hundreds, tens, and ones!
+
+```css
+:nth-child(4n) {
+  color: lime;
+}
+```
+
+```css
+.better {
+    border: none !important;
+}
+```
