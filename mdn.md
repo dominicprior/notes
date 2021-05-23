@@ -97,3 +97,59 @@ Specificity scores are in thousands, hundreds, tens, and ones!
     border: none !important;
 }
 ```
+
+```css
+a[title] { .....
+```
+
+```css
+a[href="https://example.com"] { .....
+```
+
+```css
+p::first-line { .....
+```
+
+```css
+* { .....
+```
+
+```css
+article:first-child { .....
+```
+
+```css
+article :first-child { .....  /* note the space */
+```
+
+```css
+article *:first-child { .....
+```
+
+```css
+span.foo { .....
+```
+
+```css
+.foo.bar { .....
+```
+
+```css
+p[class~="special"] { .....
+```
+
+```css
+p[class^="special"] { .....
+```
+
+```css
+p[class$="special"] { .....
+```
+
+```css
+p[class*="special"] { .....
+```
+
+```css
+p[class*="special" i] { .....
+```
