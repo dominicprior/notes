@@ -171,3 +171,12 @@ a:hover { ...
 ::selection {
   background-color: lightblue;
 ```
+
+```css
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+```
