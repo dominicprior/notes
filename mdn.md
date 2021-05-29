@@ -1,10 +1,10 @@
 These are some notes while learning from https://developer.mozilla.org/en-US/.
 
-Technologies -> CSS .....
+Always include this:
 
-## CSS basics
-
-https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics
+```html
+<meta name="viewport" content="width=device-width,initial-scale=1">
+```
 
 ```css
 p, h2 {
@@ -29,24 +29,6 @@ img {
   margin: 0 auto;
 }
 ```
-
-## Learn to style HTML using CSS
-
-## CSS first steps
-
-https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps
-
-## What is CSS?
-
-https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS
-
-## Getting started with CSS
-
-https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started
-
-## How CSS is structured
-
-https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured
 
 ```html
 <link rel="stylesheet" href="styles.css">
